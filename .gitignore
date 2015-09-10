@@ -41,3 +41,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+Core/Gazebo.Core.Engine/Debug/*.*
+Core/Gazebo.Core.Engine/Gazebo.Core.Engine.vcxproj.user
+Gazebo.sdf
+Simulator/Gazebo.Simulator.Interop/obj/*
+Simulator/Gazebo.Simulator.Sequence/obj/*
+Simulator/Gazebo.Simulator.UI/Gazebo.Simulator.UI/bin/*
+Simulator/Gazebo.Simulator.UI/Gazebo.Simulator.UI/Gazebo.Simulator.UI.csproj.user
+Simulator/Gazebo.Simulator.UI/Gazebo.Simulator.UI/obj/*
