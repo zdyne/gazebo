@@ -54,3 +54,4 @@ Core/Gazebo.Core.Engine/bin/Debug/*
 Simulator/Gazebo.Simulator.Interop/bin/*
 Simulator/Gazebo.Simulator.Sequence/bin/*
 Simulator/Gazebo.Simulator.UI/Gazebo.Simulator.UI/bin/*
+Gazebo.opensdf

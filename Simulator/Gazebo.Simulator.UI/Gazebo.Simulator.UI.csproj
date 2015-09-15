@@ -83,11 +83,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Gazebo.Simulator.Interop\Gazebo.Simulator.Interop.csproj">
+    <ProjectReference Include="..\Gazebo.Simulator.Interop\Gazebo.Simulator.Interop.csproj">
       <Project>{f442b01e-922b-4d59-aaa4-3563ec3264ea}</Project>
       <Name>Gazebo.Simulator.Interop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Gazebo.Simulator.Sequence\Gazebo.Simulator.Sequence.csproj">
+    <ProjectReference Include="..\Gazebo.Simulator.Sequence\Gazebo.Simulator.Sequence.csproj">
       <Project>{31b6b889-4094-4dc8-8ce6-8be40325600a}</Project>
       <Name>Gazebo.Simulator.Sequence</Name>
     </ProjectReference>
