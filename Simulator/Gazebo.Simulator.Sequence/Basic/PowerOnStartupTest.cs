@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gazebo.Simulator.Interop;
 
 namespace Gazebo.Simulator.Sequence.Basic
 {
-    class PowerOnStartupTest : ISequence
+    public class PowerOnStartupTest : ISequence
     {
-//        private int ops = []
+        private int instrPtr = 0;
 
-        public int GetNextOp()
+        private byte[] ops = new byte[]
         {
-            throw new NotImplementedException();
+            Ops.Descriptor, 0x04,
+            Ops.Color, 0x00, 0xFF, 0x00,
+            Ops.AllOn,
+            Ops.Delay, 0x00, 0x10,
+            Ops.Color, 0x00, 0x00, 0xFF,
+            Ops.AllOn,
+            Ops.Delay, 0x00, 0x10,
+            Ops.Color, 0xFF, 0x00, 0x00,
+            Ops.AllOn,
+            Ops.Delay, 0x00, 0x010,
+            Ops.Color, 0xFF, 0xFF, 0xFF,
+            Ops.AllOn,
+            Ops.Halt
+        };
+
+        public byte GetNextByte()
+        {
+            return ops[this.instrPtr++];
         }
     }
 }

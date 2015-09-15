@@ -10,7 +10,7 @@ namespace Gazebo.Simulator.Interop
     public class Native
     {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int GetNextOpFn();
+        public delegate byte GetNextOpFn();
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate int SetLedFn(int led, byte r, byte g, byte b);

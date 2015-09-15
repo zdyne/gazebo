@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gazebo.Simulator.Sequence
 {
-    interface ISequence
+    public interface ISequence
     {
-        int GetNextOp();
+        byte GetNextByte();
     }
 }

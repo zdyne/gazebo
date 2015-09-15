@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gazebo.Simulator.Interop;
+using Gazebo.Simulator.Sequence.Basic;
+using Gazebo.Simulator.Sequence;
 
 namespace Gazebo.Simulator.UI
 {
@@ -17,9 +19,12 @@ namespace Gazebo.Simulator.UI
 
         private DisplayModel displayModel;
 
+        private ISequence sequence;
+
         public Form1()
         {
             this.displayModel = new DisplayModel(Form1.NLeds);
+            this.sequence = new PowerOnStartupTest();
 
             InitializeComponent();
         }
@@ -27,14 +32,13 @@ namespace Gazebo.Simulator.UI
         private void Form1_Load(object sender, EventArgs e)
         {
             // XXXX TEST
-            Native.GetNextOpFn getNextOp = () => { return 0; };
+            Native.GetNextOpFn getNextOp = this.sequence.GetNextByte;
             Native.SetLedFn setLed = this.UpdateLed;
             Native.LatchLedsFn latchLeds = this.DrawLeds;
 
             Native.GzEngineInit(getNextOp, setLed, latchLeds);
             Task.Run(() =>
             {
-                //Task.Delay(2000);
                 Native.GzEngineRun();
             });
         }
