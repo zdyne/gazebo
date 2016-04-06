@@ -1,0 +1,14 @@
+# Arduino Uno R3
+CC = avr-gcc
+OBJ_COPY = avr-objcopy
+CFLAGS += -Os -DF_CPU=16000000UL -mmcu=atmega328p -c -I./Gazebo.Core.Engine -I.
+LFLAGS += -mmcu=atmega328p
+OBJFLAGS += -O ihex -R .eeprom
+
+SRC += Gazebo.Core.Engine/Engine.c
+SRC += Drivers/*.c
+SRC += Platforms/Arduino/UnoR3/*.c
+
+: foreach $(SRC) |> $(CC) $(CFLAGS) -o %o %f |> Build/Platforms/Arduino/UnoR3/%B.o
+: Build/Platforms/Arduino/UnoR3/*.o |> $(CC) $(LFLAGS) %f -o %o |> Build/Platforms/Arduino/UnoR3/gazebo
+: Build/Platforms/Arduino/UnoR3/gazebo |> $(OBJ_COPY) $(OBJFLAGS) %f %o |> Build/Platforms/Arduino/UnoR3/gazebo.hex

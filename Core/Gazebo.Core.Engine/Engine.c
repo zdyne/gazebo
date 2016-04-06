@@ -18,20 +18,20 @@ struct color
 static uint8_t(*get_next_byte)(void);
 static int(*set_led)(int led, unsigned char r, unsigned char g, unsigned char b);
 static void(*latch_leds)(void);
-
-
-static void delay(uint16_t ms);
+static void (*delay)(uint16_t ms);
 
 
 int gz_engine_init(
-	uint8_t(*get_next_byte_fn)(void),
-	int(*set_led_fn)(int led, unsigned char r, unsigned char g, unsigned char b),
-	void(*latch_leds_fn)(void)
+	uint8_t (*get_next_byte_fn)(void),
+	int (*set_led_fn)(int led, unsigned char r, unsigned char g, unsigned char b),
+	void (*latch_leds_fn)(void),
+	void (*delay_fn)(uint16_t ms)
 	)
 {
 	get_next_byte = get_next_byte_fn;
 	set_led = set_led_fn;
 	latch_leds = latch_leds_fn;
+	delay = delay_fn;
 
 	return 0;
 }
@@ -88,14 +88,4 @@ int gz_engine_run(void)
 	}
 
 	return 0;
-}
-
-static void delay(uint16_t ms)
-{
-	clock_t target = ms + clock();
-
-	while (target > clock())
-	{
-		/* Do nothing */
-	}
 }
